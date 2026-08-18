@@ -172,34 +172,28 @@
   .btn-primary:hover{box-shadow:4px 4px 0 var(--coral);}
   .btn-ghost:hover{box-shadow:4px 4px 0 var(--ink);}
 
-  /* Corner marks — echoes chart/plot export styling */
-.hero-photo-wrap::before,
-.hero-photo-wrap::after{
-  content:"";
-  position:absolute;
-  width:26px;
-  height:26px;
-  pointer-events:none;
+/* Rounded accent panel peeking out behind the photo — same language as .card */
+.hero-photo-wrap{
+  position:relative;
 }
 .hero-photo-wrap::before{
-  top:0; left:0;
-  border-top:2px solid var(--coral);
-  border-left:2px solid var(--coral);
+  content:"";
+  position:absolute;
+  inset:0 0 44px 0; /* stops above the photo-tag label */
+  background:var(--amber);
+  border-radius:var(--radius);
+  transform:translate(12px, 12px);
+  z-index:0;
 }
-.hero-photo-wrap::after{
-  bottom:44px; right:0; /* offset for the photo-tag label */
-  border-bottom:2px solid var(--violet);
-  border-right:2px solid var(--violet);
+.hero-photo-frame{
+  position:relative;
+  z-index:1;
+  box-shadow:none; /* remove the old hard-drop shadow, the panel behind does that job now */
 }
 
-/* Subtle duotone-to-color treatment, matches the .card hover feel */
-.hero-photo-frame img{
-  filter:grayscale(45%) contrast(1.05);
-  transition:filter .3s ease, transform .3s ease;
-}
-.hero-photo-frame:hover img{
-  filter:grayscale(0%) contrast(1.05);
-  transform:scale(1.02);
+/* Pill-shaped tag to match your skill chips */
+.photo-tag{
+  border-radius:20px;
 }
   .chart-legend{
     display:flex;
