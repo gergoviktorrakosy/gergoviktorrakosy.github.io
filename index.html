@@ -172,21 +172,35 @@
   .btn-primary:hover{box-shadow:4px 4px 0 var(--coral);}
   .btn-ghost:hover{box-shadow:4px 4px 0 var(--ink);}
 
-  .hero-chart{
-    position:relative;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:20px 20px 14px;
-  }
-  .hero-chart .chart-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    margin-bottom:6px;
-  }
-  .hero-chart .chart-head .label{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.08em;}
-  .hero-chart svg{width:100%; height:auto; display:block;}
+  /* Corner marks — echoes chart/plot export styling */
+.hero-photo-wrap::before,
+.hero-photo-wrap::after{
+  content:"";
+  position:absolute;
+  width:26px;
+  height:26px;
+  pointer-events:none;
+}
+.hero-photo-wrap::before{
+  top:0; left:0;
+  border-top:2px solid var(--coral);
+  border-left:2px solid var(--coral);
+}
+.hero-photo-wrap::after{
+  bottom:44px; right:0; /* offset for the photo-tag label */
+  border-bottom:2px solid var(--violet);
+  border-right:2px solid var(--violet);
+}
+
+/* Subtle duotone-to-color treatment, matches the .card hover feel */
+.hero-photo-frame img{
+  filter:grayscale(45%) contrast(1.05);
+  transition:filter .3s ease, transform .3s ease;
+}
+.hero-photo-frame:hover img{
+  filter:grayscale(0%) contrast(1.05);
+  transform:scale(1.02);
+}
   .chart-legend{
     display:flex;
     gap:16px;
